@@ -1,6 +1,6 @@
-# Grizzly Contacts
+# Timberwolf Contacts
 
-> A secure, offline-first Progressive Web App (PWA) contact manager designed with a sleek, battery-saving dark UI. Built to match the aesthetic and robust architecture of the Loonie Tunes ecosystem, Grizzly Contacts provides granular privacy controls, custom group management, and seamless offline data synchronization.
+> A secure, offline-first Progressive Web App (PWA) contact manager designed with a sleek, battery-saving dark UI. Built to match the aesthetic and robust architecture of the Loonie Tunes ecosystem, Timberwolf Contacts provides granular privacy controls, custom group management, and seamless offline data synchronization.
 
 ---
 
