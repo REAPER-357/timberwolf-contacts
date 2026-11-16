@@ -1,4 +1,4 @@
-package com.reaper357.grizzlycontacts;
+package com.reaper357.timberwolfcontacts;
 
 import com.getcapacitor.BridgeActivity;
 

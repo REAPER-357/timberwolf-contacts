@@ -439,9 +439,9 @@
             { id: 'g3', name: 'Mechanic', notes: 'Do not share', allowSync: false },
             { id: 'g4', name: 'Dentist', notes: 'Do not share', allowSync: false }
         ];
-        let contacts = safeParse(localStorage.getItem('grizzly_contacts'), []);
-        let groups = safeParse(localStorage.getItem('grizzly_groups'), DEFAULT_GROUPS);
-        let recycleBin = safeParse(localStorage.getItem('grizzly_bin'), []);
+        let contacts = safeParse(localStorage.getItem('timberwolf_contacts'), []);
+        let groups = safeParse(localStorage.getItem('timberwolf_groups'), DEFAULT_GROUPS);
+        let recycleBin = safeParse(localStorage.getItem('timberwolf_bin'), []);
         if (!Array.isArray(contacts)) contacts = [];
         if (!Array.isArray(groups)) groups = DEFAULT_GROUPS;
         if (!Array.isArray(recycleBin)) recycleBin = [];
@@ -478,9 +478,9 @@
         /* ---------- Persistence ---------- */
         function persistData(opts) {
             try {
-                localStorage.setItem('grizzly_contacts', JSON.stringify(contacts));
-                localStorage.setItem('grizzly_groups', JSON.stringify(groups));
-                localStorage.setItem('grizzly_bin', JSON.stringify(recycleBin));
+                localStorage.setItem('timberwolf_contacts', JSON.stringify(contacts));
+                localStorage.setItem('timberwolf_groups', JSON.stringify(groups));
+                localStorage.setItem('timberwolf_bin', JSON.stringify(recycleBin));
             } catch (e) {
                 showToast('Storage full or blocked - changes may not be saved');
             }
@@ -499,7 +499,7 @@
         }
 
         function updateWebhookStatus() {
-            const ts = localStorage.getItem('grizzly_webhook_last');
+            const ts = localStorage.getItem('timberwolf_webhook_last');
             $('webhookStatus').textContent = ts ? 'Last synced: ' + new Date(ts).toLocaleString() : 'Never synced.';
         }
 
@@ -523,7 +523,7 @@
             // text/plain + no-cors avoids a CORS preflight, which most simple webhooks (e.g. Apps Script) cannot answer
             fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
                 .then(() => {
-                    localStorage.setItem('grizzly_webhook_last', new Date().toISOString());
+                    localStorage.setItem('timberwolf_webhook_last', new Date().toISOString());
                     updateWebhookStatus();
                     if (manual) showToast('Backup sent (' + data.contacts.length + ' contacts)');
                 })
@@ -546,7 +546,7 @@
         function initPreferences() {
             setAccentColor(localStorage.getItem('gc_accent_color') || '#10b981');
             setAppTheme(localStorage.getItem('gc_app_theme') || 'black');
-            const savedWebhook = localStorage.getItem('grizzly_webhook');
+            const savedWebhook = localStorage.getItem('timberwolf_webhook');
             if (savedWebhook) $('webhookUrlInput').value = savedWebhook;
             updateWebhookStatus();
             updatePinHint();
@@ -633,7 +633,7 @@
 
         /* ---------- PIN / Private mode ---------- */
         async function hashPin(pin) {
-            const s = 'grizzly-pin:' + pin;
+            const s = 'timberwolf-pin:' + pin;
             try {
                 if (window.crypto && crypto.subtle) {
                     const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
@@ -1416,7 +1416,7 @@
             document.querySelectorAll('[data-theme-pick]').forEach(b => b.addEventListener('click', () => setAppTheme(b.dataset.themePick)));
             document.querySelectorAll('[data-accent]').forEach(b => b.addEventListener('click', () => setAccentColor(b.dataset.accent)));
 
-            $('webhookUrlInput').addEventListener('input', e => { localStorage.setItem('grizzly_webhook', e.target.value.trim()); });
+            $('webhookUrlInput').addEventListener('input', e => { localStorage.setItem('timberwolf_webhook', e.target.value.trim()); });
             $('btnTestWebhook').addEventListener('click', () => runSync(true));
 
             $('btnSelectMode').addEventListener('click', () => setSelectMode(!selectMode));

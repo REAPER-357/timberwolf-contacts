@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.reaper357.grizzlycontacts"
+    namespace = "com.reaper357.timberwolfcontacts"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.reaper357.grizzlycontacts"
+        applicationId "com.reaper357.timberwolfcontacts"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
