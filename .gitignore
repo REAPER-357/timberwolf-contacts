@@ -1,20 +1,19 @@
-# Dependencies
-node_modules/
-
-# Capacitor / Android build outputs
-android/app/build/
-android/app/src/main/assets/public/
-android/.gradle/
-android/build/
-android/captures/
-android/.idea/
-
-# OS & Editor overhead
+# Operating System files
 .DS_Store
 Thumbs.db
-.vscode/
-.idea/
+*.swp
 
-# Environment files
-.env
+# Node / Capacitor dependencies & build outputs
+node_modules/
+dist/
+build/
 *.log
+
+# Native IDE metadata (let Capacitor generate these dynamically)
+.idea/
+.vscode/
+*.iml
+
+# Environment & local tokens
+.env
+.env.local
